@@ -1,0 +1,86 @@
+body{
+    margin:0;
+    font-family: '微軟正黑體';
+}
+img{
+    width: 100%;
+}
+a{
+    text-decoration: none;
+}
+.head{
+    
+    background-color:black;
+    color:white;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    /*line-height: 80px;*/
+    padding:25px;
+}
+
+.main{
+    background-color: #eeeeee;
+    text-align: center;
+    /*左右排列*/
+    display: flex;
+    /*水平對其*/
+    justify-content: center;
+    /*允許內部區塊往下排列*/
+    flex-wrap:wrap;
+    max-width: 1200px;  
+    margin:0 auto;
+
+}
+.box{
+    background-color:pink;
+    width: 22%;
+    min-width: 250px;
+    max-width: 400px;;
+    margin:1%;
+    margin-bottom: 20px;
+}
+.box h2{
+    margin-bottom: 0px;
+}
+.box p{
+    padding:0 10px;
+    font-size: 12px;
+}
+.box-img{
+    height: 150px;
+    background-color: black;
+    overflow: hidden;
+}
+
+.box-btn{
+    display: block;
+    margin:0 auto;
+    width: 80%;
+    background: #000;
+    color:white;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+
+@media (max-width:1200px){
+    .box{
+        width: 46%;
+
+    }
+}
+
+@media (max-width:580px){
+    .head{
+        font-size: 8vw;
+        padding:5vw;
+    }
+    .box{
+        width: 80%;
+        margin:5vw;
+
+    }
+}
