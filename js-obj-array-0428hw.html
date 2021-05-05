@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Object Array homework</title>
+</head>
+<body>
+	<script>
+	//計算總和
+
+	function sum(array){
+		
+		let total = 0;
+		for( let i = 0; i<array.length; i++){
+			total+=array[i];
+		}
+		console.log(total);
+
+	}
+  
+     sum([2,5,100,1,-20,5]);
+     sum([-3,1,50,-5]);
+
+
+
+
+     //找出最大值
+     function findMax(max){
+        // console.log(max);
+        let origin = max[0];
+        //console.log(origin);
+        for(let i = 0; i<max.length; i++){
+           
+           // console.log(max[i]);
+            if( max[i] > origin ){
+                origin = max[i];
+            }
+        }
+        
+        console.log(origin);	
+     }
+   
+     findMax([-5,0,-1]);
+     findMax([5,10,2,11,3,8,6]);
+     findMax([-10,-2,-6]);
+
+
+
+
+     //計算平均售價
+     let data ={
+         count: 3,
+         products:[
+             {
+                 name:"Macbook",
+                 price:60000
+             },
+             {
+                 name:"Surface",
+                 price:50000
+
+             },
+             {
+                 name:"Chromebook",
+                 price:20000
+             }
+         ]
+     }
+
+
+     
+     function avg(){
+         let sum = 0 ;
+         for(let i = 0 ; i< data.count; i++){
+            let price = data.products[i].price;
+            sum+=price;
+          //  console.log(sum);
+            
+        }
+        let average = sum / data.count;
+        console.log(average);
+     }
+     avg();
+
+
+
+	</script>
+</body>
+</html>
