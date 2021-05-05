@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML DOM HW</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div><img src="img/header.jpg" alt=""></div>
+        <div class="tabs">
+          <ul class="tab-nav">
+            <li class="is-active active"><a href="#tab-one">電影</a></li>
+            <li><a href="#tab-two">影集</a></li>
+            <li><a href="#tab-three">熱門</a></li>
+          </ul>
+        </div>
+        
+        <section class="tab-content is-active" id="tab-one">
+            <ul>
+                <li><img src="img/series01.jpg" alt=""></li>
+                <li><img src="img/series02.jpg" alt=""></li>
+                <li><img src="img/series03.jpg" alt=""></li>
+                <li><img src="img/series04.jpg" alt=""></li>
+                <li><img src="img/series05.jpg" alt=""></li>
+            </ul>
+        </section>
+        <section class="tab-content" id="tab-two">
+            <ul>
+                <li><img src="img/movie01.jpg" alt=""></li>
+                <li><img src="img/movie02.jpg" alt=""></li>
+                <li><img src="img/movie03.jpg" alt=""></li>
+                <li><img src="img/movie04.jpg" alt=""></li>
+                <li><img src="img/movie05.jpg" alt=""></li>
+                <li><img src="img/movie06.jpg" alt=""></li>
+                <li><img src="img/movie07.jpg" alt=""></li>
+            </ul>
+        </section>
+        <section class="tab-content" id="tab-three">
+            <ul>
+            <li><img src="img/hot01.jpg" alt=""></li>
+            <li><img src="img/hot02.jpg" alt=""></li>
+            <li><img src="img/hot03.jpg" alt=""></li>
+            <li><img src="img/hot04.jpg" alt=""></li>
+            <li><img src="img/hot05.jpg" alt=""></li>
+            <li><img src="img/hot06.jpg" alt=""></li>
+            </ul>
+        </section>
+        
+      </div>
+<script>
+
+    let tabs = document.querySelectorAll(".tab-nav li");
+    let sections = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", e => {
+    e.preventDefault();
+    removeActiveTab();
+    addActiveTab(tab);
+  });
+})
+
+let removeActiveTab = () => {
+  tabs.forEach(tab => {
+    tab.classList.remove("is-active");
+  tab.classList.remove("active");
+  });
+  sections.forEach(section => {
+    section.classList.remove("is-active");
+  });
+}
+
+let addActiveTab = tab => {
+  tab.classList.add("is-active");
+  tab.classList.add("active");
+  let href = tab.querySelector("a").getAttribute("href");
+  let matchingSection = document.querySelector(href);
+  matchingSection.classList.add("is-active");
+}
+
+    
+</script>
+</body>
+</html>
