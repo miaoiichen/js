@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab</title>
+
+    <link rel="stylesheet" href="style2.css"/>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header"><img src="img/header.jpg" alt=""></div>
+        <div class="tablist">
+            <div class="tab-btn tab-current" id='tab1-Btn' onclick="change('tab1');">影集</div>
+            <div class="tab-btn" id='tab2-Btn' onclick="change('tab2');">電影</div>
+            <div class="tab-btn" id='tab3-Btn' onclick="change('tab3');">熱門</div>
+        </div>
+        <div class="tabcontent">
+            <div class="tab-con tab-con-current" id="tab1-Con">
+                
+                <ul class="tab-content">
+                    <li><img src="img/series01.jpg" alt=""></li>
+                    <li><img src="img/series02.jpg" alt=""></li>
+                    <li><img src="img/series03.jpg" alt=""></li>
+                    <li><img src="img/series04.jpg" alt=""></li>
+                    <li><img src="img/series05.jpg" alt=""></li>
+                    
+                </ul>
+            </div>
+            <div class="tab-con"  id="tab2-Con">
+                <ul class="tab-content">
+                    <li><img src="img/movie01.jpg" alt=""></li>
+                    <li><img src="img/movie02.jpg" alt=""></li>
+                    <li><img src="img/movie03.jpg" alt=""></li>
+                    <li><img src="img/movie04.jpg" alt=""></li>
+                    <li><img src="img/movie05.jpg" alt=""></li>
+                    <li><img src="img/movie06.jpg" alt=""></li>
+                    <li><img src="img/movie07.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="tab-con"  id="tab3-Con">
+                <ul class="tab-content">
+                    <li><img src="img/hot01.jpg" alt=""></li>
+                    <li><img src="img/hot02.jpg" alt=""></li>
+                    <li><img src="img/hot03.jpg" alt=""></li>
+                    <li><img src="img/hot04.jpg" alt=""></li>
+                    <li><img src="img/hot05.jpg" alt=""></li>
+                    <li><img src="img/hot06.jpg" alt=""></li>
+                    </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        //點擊 tab-btn  =>onclick(inline)
+        //選取 tabbtn
+        //切換tab-con   =>function
+        
+        
+        /*
+        function changeToHot(){
+            let tabBtn1 = document.querySelector('#tab1-Btn');
+            let tabCon1 = document.querySelector('#tab1-Con');
+            let tabBtn2 = document.querySelector('#tab2-Btn');
+            let tabCon2 = document.querySelector('#tab2-Con');
+            tabBtn1.className = 'tab-btn tab-current';
+            tabCon1.className = 'tab-con-current ';
+            tabBtn2.className = 'tab-btn';
+            tabCon2.className = 'tab-con';
+        }
+
+        function changeToMovie(){
+            let tabBtn1 = document.querySelector('#tab1-Btn');
+            let tabCon1 = document.querySelector('#tab1-Con');
+            let tabBtn2 = document.querySelector('#tab2-Btn');
+            let tabCon2 = document.querySelector('#tab2-Con');
+            tabBtn2.className = 'tab-btn tab-current';
+            tabCon2.className = 'tab-con-current ';
+            tabBtn1.className = 'tab-btn';
+            tabCon1.className = 'tab-con';
+        }
+        *//////////////////////////
+
+        //簡化重複步驟
+        function get(selector){
+            return document.querySelector(selector);
+        }
+   /*
+        //增加function 參數
+        function change(Name){
+            let tabBtn1 = get('#tab1-Btn');
+            let tabCon1 = get('#tab1-Con');
+            let tabBtn2 = get('#tab2-Btn');
+            let tabCon2 = get('#tab2-Con');
+            //console.log(tabCon2);
+
+            //判斷參數對應功能
+            if(Name == 'tab1'){
+                tabBtn1.className = 'tab-btn tab-current';
+                tabCon1.className = 'tab-con-current ';
+                tabBtn2.className = 'tab-btn';
+                tabCon2.className = 'tab-con';
+            }else{
+                tabBtn2.className = 'tab-btn tab-current';
+                tabCon2.className = 'tab-con-current ';
+                tabBtn1.className = 'tab-btn';
+                tabCon1.className = 'tab-con';
+            }
+        }
+
+       */////////////////////////////////////////
+        /*
+        //idea01 選取全部的tab 然後把點擊的那一個增加tab-current =>querySelectAll
+
+        function change(Name){
+            //選取全部tabBtn
+            let tabs = document.querySelectorAll('.tab-btn'); //==>產生成array tabs[]
+            //逐一設定成只有 tab-btn =>for()
+            for(let i = 0 ;i<tabs.length; i++){
+                tabs[i].className ='tab-btn';
+                //console.log(tabs[i]);
+            }
+            //選取點擊的tab
+            let clickTab = document.querySelector('#'+ Name + '-Btn');
+                //console.log(clickTab);
+
+            //更改對應的按鈕功能
+            clickTab.className = 'tab-btn tab-current';
+
+            //選擇全部的tabCon
+            let tabCon = document.querySelectorAll('.tab-con');
+            //將全部的tabCon設為原始設定
+            for(let i = 0 ; i<tabCon.length; i++){
+                tabCon[i].className = 'tab-con';
+            }
+            //選擇對應的區塊
+            let currentTab = document.querySelector('#'+ Name + '-Con');
+
+            //更改對應的區塊顯示
+            currentTab.className = 'tab-con tab-con-current ';
+
+        }
+        *///////////////////////////////////////////////
+         //idea02 對currentTab / clickTab作用
+
+         //選取當下作用的按鈕
+         let clickTab = document.querySelector('.tab-current');
+         console.log(clickTab);
+         //選取當下顯示區塊
+         let  currentTab = document.querySelector('.tab-con-current');
+         console.log(currentTab);
+
+         //change()
+         function change(Name){
+            //將原本點擊的改為普通按鈕
+            clickTab.className="tab-btn";
+            //點擊不同按鈕 =>改變內容
+            clickTab = document.querySelector('#' + Name + '-Btn');
+            //給予新按鈕 class
+            clickTab.className = 'tab-btn tab-current';
+
+            //將原本作用的區塊改為普通區塊
+            currentTab.className="tab-con";
+            //點擊不同按鈕 =>改變內容
+            currentTab = document.querySelector('#' + Name + '-Con');
+            //給予新按鈕 class
+            currentTab.className = 'tab-con tab-con-current ';
+
+
+
+         }
+
+
+
+
+
+        
+
+    </script>
+
+    
+</body>
+</html>
