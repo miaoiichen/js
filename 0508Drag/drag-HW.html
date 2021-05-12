@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <title>Drag Homework</title>
+    <style> 
+        body{
+            margin:0;
+        }
+        .wrap{
+            height: 100vh;
+            display: flex;
+          
+            width: 100%;    
+            position: relative;
+        }
+        .edit{
+           
+            height: 100%;   
+            background-color: pink;
+            width: calc( (100% - 5px) /2 );
+         
+        }
+        .demo{
+            height: 100%; 
+            background-color: #f47c7c;
+            width: calc( (100% - 5px) /2 );
+        }
+        .drag{
+            position: fixed;
+            background-color: gray;
+            width: 5px; 
+            height: 100%;   
+            cursor: col-resize;
+            left: calc( 50% - 3px);
+          
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="wrap">  
+        <div class="edit"></div>
+        <div class="drag"></div>
+        <div class="demo"></div>
+    </div>
+
+    <script>    
+        //點擊drag =>mousedown
+        //拖拉darg =>mousemove
+        //mousemove =>改變edit demo的寬度
+        //放掉drag =>mouseup
+        //mouseup =>移除監聽mousemove
+
+
+        //點擊drag =>mousedown
+
+        //選取並命名需要的元素
+        function get(selector){
+            return document.querySelector(selector);
+        }
+        let dragEle = get(".drag");
+        let editArea = get(".edit");
+        let demoArea = get(".demo");
+        
+
+        
+        let move = function(e){
+            //讓dragEle跟著滑鼠移動
+            dragEle.style.left = e.clientX + "px";
+            //console.log(e.clientX,e.clientY);
+
+            //讓edit demo改變寬度
+            editArea.style.width =  e.clientX + "px";
+            console.log(editArea.style.width);
+            demoArea.style.width =  window.innerWidth  - ( e.clientX)  + "px";
+            console.log(demoArea.style.width);
+        }
+
+        //監聽mousedown 並創建函式
+        let drag = function(){
+            //讓dragEle跟著滑鼠移動
+            document.addEventListener("mousemove",move);
+        };
+        dragEle.addEventListener("mousedown",drag);
+
+
+        //放掉drag =>mouseup
+        let drop = function(){
+            //讓dragEle跟著滑鼠移動
+            document.removeEventListener("mousemove",move);
+        };
+        dragEle.addEventListener("mouseup",drop);
+
+    </script>
+</body>
+</html>
